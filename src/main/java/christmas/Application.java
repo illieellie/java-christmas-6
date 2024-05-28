@@ -2,6 +2,7 @@ package christmas;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Application {
     public static void main(String[] args) {
@@ -9,22 +10,25 @@ public class Application {
         int day = CommentIO1(); // 날짜
         Map<String,Integer> order = CommentIO2(); // 메뉴-개수
 
-        Order orderService = new Order();
 
         OutputView.printOrder(order); // 주문 프린트
-        int sumPrice = orderService.sumPrice(order);
-        OutputView.printPrice(sumPrice);
+        Order orderService = new Order();
 
-        String gift = orderService.getGift(sumPrice);
-        OutputView.printGift(gift);
-
-        int discountPrice = orderService.discountPrice(day);
-        OutputView.printDiscountPrice(discountPrice);
-
-        OutputView.printResultPrice(sumPrice-discountPrice);
-
-        String badge = orderService.getBadge(discountPrice);
-        OutputView.printBadge(badge);
+//        int sumPrice = orderService.sumPrice(order);
+//        OutputView.printPrice(sumPrice);
+//
+//        String gift = orderService.getGift(sumPrice);
+//        OutputView.printGift(gift);
+//
+//        // 혜택내역, 총혜택 금액 print
+//        String []benefitAndPrice = orderService.getBenefit(day);
+//        OutputView.printBenefitAndPrice(benefitAndPrice);
+//
+//        int discountPrice = Integer.parseInt(benefitAndPrice[0]);
+//        OutputView.printResultPrice(sumPrice-discountPrice);
+//
+//        String badge = orderService.getBadge(discountPrice);
+//        OutputView.printBadge(badge);
 
     }
 

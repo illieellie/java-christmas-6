@@ -1,6 +1,7 @@
 package christmas;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class OutputView {
     // 유틸성 클래스
@@ -25,20 +26,32 @@ public class OutputView {
     }
 
     public static void printOrder(Map<String, Integer> order) {
+        System.out.println("<주문 메뉴>");
+       for(String key : order.keySet()){
+           System.out.println(key + " " + order.get(key) + "개");
+       }
+
     }
 
     public static void printPrice(int sumPrice) {
+        System.out.println("<할인 전 총주문 금액>\n"+sumPrice);
+        // 금액에 콤마 붙여야함
     }
 
     public static void printGift(String gift) {
+        System.out.println("<증정 메뉴>\n" + gift);
     }
 
     public static void printDiscountPrice(int discountPrice) {
+        System.out.println("<혜택 내역>\n");
     }
 
     public static void printResultPrice(int i) {
     }
 
     public static void printBadge(String badge) {
+    }
+
+    public static void printBenefitAndPrice(String[] benefitAndPrice) {
     }
 }
