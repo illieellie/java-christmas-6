@@ -36,6 +36,7 @@ public class InputView {
         // 배열로 만든 다음 map 에 넣기
         String[] temp = s.split(",");
         Menu menu = new Menu();
+        validationOrder(temp.length);
         for (int i = 0; i < temp.length; i++){
             String []temp2 = temp[i].split("-"); // 타파스-1 의 형식
 
@@ -49,6 +50,11 @@ public class InputView {
             return order; // 메뉴-값 반환
     }
 
+    public static void validationOrder(int num) throws IllegalArgumentException{
+        if(num==0){
+            throw new IllegalArgumentException();
+        }
+    }
     public static void validationFormat(int length) throws IllegalArgumentException{
         if(length!=2){ // 메뉴 가격으로 나누어지지 않았다면
             throw new IllegalArgumentException();
