@@ -1,9 +1,15 @@
 package christmas;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int day = CommentIO1(); // 날짜
+        Map<String,Integer> order = CommentIO2(); // 메뉴-개수
+
+
     }
 
     public static int CommentIO1(){
@@ -18,6 +24,20 @@ public class Application {
             }
         }
         return day; // 날짜 반환
+    }
+
+    public static Map<String,Integer> CommentIO2(){
+        Map<String,Integer> order;
+        OutputView.printComment2();
+        while(true){
+            try {
+                order = InputView.inputComment2(); // map 반환
+                if (order.size()!=0) break;
+            }catch (IllegalArgumentException e){
+                OutputView.printErrorMessageMenu();
+            }
+        }
+       return order; // 메뉴-개수 반환
     }
 
 }

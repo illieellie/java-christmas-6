@@ -11,8 +11,7 @@
 구현 (Input/Output/ServiceRequest-OrderService)
 basic.enum(day), map(menu)
 1. 방문 날짜 멘트 출력, 입력 받기
-out. 주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)
-in. 타파스-1,제로콜라-1
+2. 메뉴 멘트 출력, 입력 받기 
 sr1. 주문 메뉴 정리
 sr2. 할인 전 총주문 금액 
 sr3. 증정 메뉴
