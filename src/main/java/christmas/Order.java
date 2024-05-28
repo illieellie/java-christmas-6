@@ -15,8 +15,12 @@ public class Order {
         return sumPrice;
     }
 
-//    public String getGift(int sumPrice) {
-//    }
+    public String getGift(int sumPrice) {
+        if(sumPrice>=120000){
+            return "샴페인 1개";
+        }
+        return "없음";
+    }
 
 //    public String getBadge(int discountPrice) {
 //    }

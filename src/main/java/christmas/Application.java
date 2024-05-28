@@ -10,16 +10,15 @@ public class Application {
         int day = CommentIO1(); // 날짜
         Map<String,Integer> order = CommentIO2(); // 메뉴-개수
 
-
         OutputView.printOrder(order); // 주문 프린트
         Order orderService = new Order();
 
         int sumPrice = orderService.sumPrice(order);
         OutputView.printPrice(sumPrice);
-//
-//        String gift = orderService.getGift(sumPrice);
-//        OutputView.printGift(gift);
-//
+
+        String gift = orderService.getGift(sumPrice);
+        OutputView.printGift(gift);
+
 //        // 혜택내역, 총혜택 금액 print
 //        String []benefitAndPrice = orderService.getBenefit(day);
 //        OutputView.printBenefitAndPrice(benefitAndPrice);
