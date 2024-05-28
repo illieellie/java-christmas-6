@@ -27,5 +27,7 @@ public class Order {
 //
 //
 //    public String[] getBenefit(int day) {
+//        // 혜택 내역, 혜택 금액 반환
+//        //
 //    }
 }

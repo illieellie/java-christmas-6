@@ -19,10 +19,10 @@ public class Application {
         String gift = orderService.getGift(sumPrice);
         OutputView.printGift(gift);
 
-//        // 혜택내역, 총혜택 금액 print
+        // 혜택내역, 총혜택 금액 print
 //        String []benefitAndPrice = orderService.getBenefit(day);
 //        OutputView.printBenefitAndPrice(benefitAndPrice);
-//
+
 //        int discountPrice = Integer.parseInt(benefitAndPrice[0]);
 //        OutputView.printResultPrice(sumPrice-discountPrice);
 //

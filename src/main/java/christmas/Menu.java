@@ -56,4 +56,12 @@ public class Menu {
         return price;
     }
 
+    public int orderOnlyDrink(String menuName){
+        // 음료가 아니면 +1을 반환
+        if(drink.containsKey(menuName)){
+            return 0;
+        }
+        return 1;
+    }
+
 }
