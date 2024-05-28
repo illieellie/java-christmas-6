@@ -14,8 +14,8 @@ public class Application {
         OutputView.printOrder(order); // 주문 프린트
         Order orderService = new Order();
 
-//        int sumPrice = orderService.sumPrice(order);
-//        OutputView.printPrice(sumPrice);
+        int sumPrice = orderService.sumPrice(order);
+        OutputView.printPrice(sumPrice);
 //
 //        String gift = orderService.getGift(sumPrice);
 //        OutputView.printGift(gift);
