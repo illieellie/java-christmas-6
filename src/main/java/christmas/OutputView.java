@@ -70,6 +70,14 @@ public class OutputView {
     public static void printBadge(String badge) {
     }
 
-    public static void printBenefitAndPrice(String[] benefitAndPrice) {
+    public static void printBenefitAndPrice(Map<String,Integer> benefit) {
+        System.out.println("<혜택 내역>");
+        if(benefit.size()==0){
+            System.out.println("없음");
+        } else if (benefit.size()!=0) {
+            for(String key : benefit.keySet()){
+                System.out.println(key + ": -"+addComma(benefit.get(key))+"원");
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package christmas;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -25,54 +26,78 @@ public class Order {
 //    }
 //
 //
-//    public Map<String,Integer> getBenefit(int orderDay, Map<String,Integer> order, boolean isGift) {
-//        // 혜택 내역, 혜택 금액 반환
-//        String[] result = new String[2];
-//        StringBuilder s = new StringBuilder();
-//        int sumDiscountPrice = 0;
-//
-//        Day day = getDay(orderDay%7); // 요일
-//
-//        if(1<=orderDay&&orderDay<=25) { // 크리스마스 디데이 할인
-//            int discountPrice = 1000;
-//            discountPrice+=orderDay-1;
-//            sumDiscountPrice+=discountPrice;
-//            s.append("크리스마스 디데이 할인:"+discountPrice+"\n");
-//        }
-//
-//        if(day==Day.FRI||day==Day.SAT){
-//            int discountPrice = 0;
-//            // 주말 할인
-//            for(String key : order.keySet()){
-//                if(menu.isMain(key)){
-//                   discountPrice+= 2023;
-//                }
-//            }
-//            sumDiscountPrice+=discountPrice;
-//            s.append("주말 할인:"+discountPrice+"\n");
-//
-//        }
-//        if(!(day==Day.FRI||day==Day.SAT)){
-//           // 평일 할인
-//            int discountPrice = 0;
-//            for(String key : order.keySet()){
-//                if(menu.isDessert(key)){
-//                    discountPrice+= 2023;
-//                }
-//            }
-//            sumDiscountPrice+=discountPrice;
-//            s.append("평일 할인:"+discountPrice+"\n");
-//        }
-//
-//        // 증정 이벤트 빠짐
-//        // 총 혜택 금액
-//
-//        result[0] = String.valueOf(sumDiscountPrice);
-//        result[1] = String.valueOf(s);
-//
-//        return result;
-//    }
 
+
+    public Map<String,Integer> eventXMas(int orderDay){
+        Map<String,Integer> result = new HashMap<>(); // *해쉬맵 생성을 안 하고 바로 넘기고 싶음
+        int discountPrice = 0;
+        if(1<=orderDay&&orderDay<=25){
+            discountPrice+=1000+orderDay-1;
+        }
+        if(discountPrice!=0) {
+            result.put("크리스마스 디데이 할인", discountPrice);
+        }
+        return result;
+    }
+
+    public Map<String,Integer> eventWeekday(int orderDay,Map<String,Integer> order){
+        Map<String,Integer> result = new HashMap<>();
+        Day day = getDay(orderDay%7); // 요일
+        int discountPrice = 0;
+        if(!(day==Day.FRI||day==Day.SAT)){
+            for(String key : order.keySet()){
+                if(menu.isDessert(key)){
+                    discountPrice+= 2023;
+                }
+            }
+        }
+        if(discountPrice!=0){
+            result.put("평일 할인",discountPrice);
+        }
+        return result;
+    }
+
+    public Map<String,Integer> eventWeekend(int orderDay,Map<String,Integer> order){
+        Map<String,Integer> result = new HashMap<>();
+        Day day = getDay(orderDay%7); // 요일
+        int discountPrice = 0;
+        if(day==Day.FRI||day==Day.SAT){
+            // 주말 할인
+            for(String key : order.keySet()){
+                if(menu.isMain(key)){
+                    discountPrice+= 2023;
+                }
+            }
+        }
+        if(discountPrice!=0) {
+            result.put("주말 할인", discountPrice);
+        }
+        return result;
+    }
+
+    public Map<String,Integer> eventGift(boolean isGift) {
+        Map<String, Integer> result = new HashMap<>();
+        if(isGift){
+            result.put("증정 이벤트",25000);
+        }
+        return result;
+    }
+
+
+    public Map<String,Integer> getBenefit(int orderDay, Map<String,Integer> order, boolean isGift) {
+        // 혜택 내역, 혜택 금액 반환
+        Map<String,Integer> benefit = new HashMap<>();
+        
+        int sumDiscountPrice = 0;
+
+        // 만약 널을 넣으려고 하면 어떻게 되는건지 테스트
+        benefit.putAll(eventXMas(orderDay));
+        benefit.putAll(eventWeekday(orderDay,order));
+        benefit.putAll(eventWeekend(orderDay,order));
+        benefit.putAll(eventGift(isGift));
+
+        return benefit;
+    }
 
 
 

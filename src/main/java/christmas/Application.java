@@ -20,10 +20,13 @@ public class Application {
         boolean gift = orderService.getGift(sumPrice); // 기프트
         OutputView.printGift(gift);
 
-        // 혜택내역, 총혜택 금액 print
+        // 혜택내역
+        Map<String,Integer> benefit = orderService.getBenefit(orderDay,order,gift);
+        OutputView.printBenefitAndPrice(benefit);
 
-//        Map<String,Integer> benefitAndPrice = orderService.getBenefit(orderDay,order,gift);
-//        OutputView.printBenefitAndPrice(benefitAndPrice);
+        // 총혜택 금액 print
+
+
 
 //        int discountPrice = Integer.parseInt(benefitAndPrice[0]);
 //        OutputView.printResultPrice(sumPrice-discountPrice);

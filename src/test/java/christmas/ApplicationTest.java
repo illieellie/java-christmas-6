@@ -92,6 +92,25 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 혜택내역_출력() {
+        assertSimpleTest(() -> {
+            runException("3", "티본스테이크-1,바비큐립-1");
+            assertThat(output()).contains("<혜택 내역>\n" +
+                    "크리스마스 디데이 할인: -1,002원\n" +
+                    "주말 할인: -4,046원");
+        });
+    }
+
+    @Test
+    void 혜택내역_없음_출력() {
+        assertSimpleTest(() -> {
+            runException("26", "타파스-1,제로콜라-1");
+            assertThat(output()).contains("<혜택 내역>\n" +
+                    "없음");
+        });
+    }
+
 
     @Override
     protected void runMain() {
