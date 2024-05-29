@@ -6,32 +6,12 @@ import java.util.Objects;
 public class Order {
     Menu menu = new Menu();
 
-    public String[] sumPrice(Map<String, Integer> order) {
+    public int sumPrice(Map<String, Integer> order) {
         int sumPrice = 0;
-        String[] result = new String[2];
-
         for(String key : order.keySet()){
             sumPrice += menu.findPrice(key);
         }
-        result[0] = String.valueOf(sumPrice);
-        result[1] = addComma(sumPrice);
-
-        return result;
-    }
-
-    private String addComma(int sumPrice) {
-        // 뒤에서 4번째 자리에 콤마
-        String result = String.valueOf(sumPrice);
-        int  indexTail = result.length();
-        for(int i = indexTail-3;i>0; i-=3){
-         // i자리에 컴마를 찍으면 됨
-            String headString = result.substring(0,i); // 머리
-            String tailString = result.substring(i,indexTail); // 꼬리
-            // 사이에 컴마를 넣어야함
-            result=headString+','+tailString;
-            indexTail+=1;
-        }
-        return result;
+        return sumPrice;
     }
 
     public boolean getGift(int sumPrice) {
@@ -45,7 +25,7 @@ public class Order {
 //    }
 //
 //
-//    public String[] getBenefit(int orderDay, Map<String,Integer> order, boolean isGift) {
+//    public Map<String,Integer> getBenefit(int orderDay, Map<String,Integer> order, boolean isGift) {
 //        // 혜택 내역, 혜택 금액 반환
 //        String[] result = new String[2];
 //        StringBuilder s = new StringBuilder();

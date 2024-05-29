@@ -33,8 +33,23 @@ public class OutputView {
 
     }
 
-    public static void printPrice(String sumPrice) {
-        System.out.println("<할인 전 총주문 금액>\n"+sumPrice+"원");
+    public static void printPrice(int sumPrice) {
+        System.out.println("<할인 전 총주문 금액>\n"+addComma(sumPrice)+"원");
+    }
+
+    public static String addComma(int sumPrice) {
+        // 뒤에서 4번째 자리에 콤마
+        String result = String.valueOf(sumPrice);
+        int  indexTail = result.length();
+        for(int i = indexTail-3;i>0; i-=3){
+            // i자리에 컴마를 찍으면 됨
+            String headString = result.substring(0,i); // 머리
+            String tailString = result.substring(i,indexTail); // 꼬리
+            // 사이에 컴마
+            result=headString+','+tailString;
+            indexTail+=1;
+        }
+        return result;
     }
 
     public static void printGift(boolean gift) {

@@ -14,14 +14,15 @@ public class Application {
         Order orderService = new Order();
 
         // string 을 반환 하도록 다시 수정
-        String[] sumPrice = orderService.sumPrice(order); // 할인전 총액 [0] : without comma, [1] : add comma
-        OutputView.printPrice(sumPrice[1]);
+        int sumPrice = orderService.sumPrice(order); // 할인전 총액 [0] : without comma, [1] : add comma
+        OutputView.printPrice(sumPrice);
 
-        boolean gift = orderService.getGift(Integer.parseInt(sumPrice[0])); // 기프트
+        boolean gift = orderService.getGift(sumPrice); // 기프트
         OutputView.printGift(gift);
 
         // 혜택내역, 총혜택 금액 print
-//        String []benefitAndPrice = orderService.getBenefit(orderDay,order,gift);
+
+//        Map<String,Integer> benefitAndPrice = orderService.getBenefit(orderDay,order,gift);
 //        OutputView.printBenefitAndPrice(benefitAndPrice);
 
 //        int discountPrice = Integer.parseInt(benefitAndPrice[0]);
