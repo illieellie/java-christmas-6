@@ -7,20 +7,21 @@ import java.util.Objects;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int day = CommentIO1(); // 날짜
+        int orderDay = CommentIO1(); // 날짜
         Map<String,Integer> order = CommentIO2(); // 메뉴-개수
 
         OutputView.printOrder(order); // 주문 프린트
         Order orderService = new Order();
 
-        int sumPrice = orderService.sumPrice(order);
-        OutputView.printPrice(sumPrice);
+        // string 을 반환 하도록 다시 수정
+        String[] sumPrice = orderService.sumPrice(order); // 할인전 총액 [0] : without comma, [1] : add comma
+        OutputView.printPrice(sumPrice[1]);
 
-        String gift = orderService.getGift(sumPrice);
+        boolean gift = orderService.getGift(Integer.parseInt(sumPrice[0])); // 기프트
         OutputView.printGift(gift);
 
         // 혜택내역, 총혜택 금액 print
-//        String []benefitAndPrice = orderService.getBenefit(day);
+//        String []benefitAndPrice = orderService.getBenefit(orderDay,order,gift);
 //        OutputView.printBenefitAndPrice(benefitAndPrice);
 
 //        int discountPrice = Integer.parseInt(benefitAndPrice[0]);

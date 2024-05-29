@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class Menu {
 
-    public static List<String> allMenu = new ArrayList<>();
-    public static Map<String,Integer> starter = new HashMap<>();
-    public static Map<String,Integer> main = new HashMap<>();
-    public static Map<String,Integer> dessert = new HashMap<>();
-    public static Map<String,Integer> drink = new HashMap<>();
+    private static List<String> allMenu = new ArrayList<>();
+    private static Map<String,Integer> starter = new HashMap<>();
+    private static Map<String,Integer> main = new HashMap<>();
+    private static Map<String,Integer> dessert = new HashMap<>();
+    private static Map<String,Integer> drink = new HashMap<>();
 
     public Menu(){
         starter.put("양송이수프",6000);
@@ -63,5 +63,24 @@ public class Menu {
         }
         return 1;
     }
+    public  boolean isMain(String menuName){
+        if(main.containsKey(menuName)){
+            return true;
+        }
+        return false;
+    }
+    public  boolean isDessert(String menuName){
+        if(dessert.containsKey(menuName)){
+            return true;
+        }
+        return false;
+    }
+    public  boolean isDrink(String menuName){
+        if(drink.containsKey(menuName)){
+            return true;
+        }
+        return false;
+    }
+
 
 }

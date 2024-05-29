@@ -33,13 +33,16 @@ public class OutputView {
 
     }
 
-    public static void printPrice(int sumPrice) {
-        System.out.println("<할인 전 총주문 금액>\n"+sumPrice);
-        // 금액에 콤마 붙여야함
+    public static void printPrice(String sumPrice) {
+        System.out.println("<할인 전 총주문 금액>\n"+sumPrice+"원");
     }
 
-    public static void printGift(String gift) {
-        System.out.println("<증정 메뉴>\n" + gift);
+    public static void printGift(boolean gift) {
+        String result = "없음";
+        if(gift==true){
+            result = "샴페인 1개";
+        }
+        System.out.println("<증정 메뉴>\n" + result);
     }
 
     public static void printDiscountPrice(int discountPrice) {
