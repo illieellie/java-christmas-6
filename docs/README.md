@@ -24,3 +24,5 @@ basic code : enum(day), map(menu)
 
 느낀점
 1. 기능에 따라 분류하자 (input, output, service) - 컴마는 어디의 영역인가 
+2. 활용법 공부 (enum,string, stringBuilder,map등)
+3. 제대로된 입력이 들어올때까지 받는 기능 효율적인지 확인 
