@@ -9,15 +9,15 @@
 
 
 구현 (Input/Output/ServiceRequest-OrderService)
-basic.enum(day), map(menu)
+basic code : enum(day), map(menu)
 1. 방문 날짜 멘트 출력, 입력 받기
 2. 메뉴 멘트 출력, 입력 받기 
 3. 주문 메뉴 출력
 4. sr.할인 전 총주문 금액, 출력  
 5. sr.증정 메뉴, 출력
 6. sr.혜택 내역, 출력
-sr5. 총혜택 금액
-sr6. 할인 후 예상 결재 금액 
+7. sr.총혜택 금액, 출력 
+8. sr. 할인 후 예상 결재 금액, 출력 
 sr7. 12월 이벤트 배지 
 
 예외처리

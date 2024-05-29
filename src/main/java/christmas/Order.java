@@ -96,6 +96,7 @@ public class Order {
         benefit.putAll(eventWeekend(orderDay,order));
         benefit.putAll(eventGift(isGift));
 
+
         return benefit;
     }
 
@@ -117,5 +118,13 @@ public class Order {
             today = Day.SAT;
         }
         return today;
+    }
+
+    public int sumBenefitPrice(Map<String, Integer> benefit) {
+        int price = 0;
+        for(String key : benefit.keySet()){
+         price+=benefit.get(key);
+        }
+        return price;
     }
 }

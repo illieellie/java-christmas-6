@@ -60,17 +60,15 @@ public class OutputView {
         System.out.println("<증정 메뉴>\n" + result);
     }
 
-    public static void printDiscountPrice(int discountPrice) {
-        System.out.println("<혜택 내역>\n");
-    }
-
     public static void printResultPrice(int i) {
+        System.out.println("<할인 후 예상 결제 금액>");
+        System.out.println(addComma(i)+"원");
     }
 
     public static void printBadge(String badge) {
     }
 
-    public static void printBenefitAndPrice(Map<String,Integer> benefit) {
+    public static void printBenefit(Map<String,Integer> benefit) {
         System.out.println("<혜택 내역>");
         if(benefit.size()==0){
             System.out.println("없음");
@@ -80,4 +78,13 @@ public class OutputView {
             }
         }
     }
+
+    public static void printBenefitPrice(int sumBenefitPrice) {
+        System.out.println("<총혜택 금액>");
+        System.out.println(addComma(sumBenefitPrice)+"원");
+    }
+
+
+
+
 }
