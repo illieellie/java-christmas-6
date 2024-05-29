@@ -30,11 +30,11 @@ public class OutputView {
        for(String key : order.keySet()){
            System.out.println(key + " " + order.get(key) + "개");
        }
-
+        System.out.println("");
     }
 
     public static void printPrice(int sumPrice) {
-        System.out.println("<할인 전 총주문 금액>\n"+addComma(sumPrice)+"원");
+        System.out.println("<할인 전 총주문 금액>\n"+addComma(sumPrice)+"원\n");
     }
 
     public static String addComma(int sumPrice) {
@@ -57,15 +57,16 @@ public class OutputView {
         if(gift==true){
             result = "샴페인 1개";
         }
-        System.out.println("<증정 메뉴>\n" + result);
+        System.out.println("<증정 메뉴>\n" + result+"\n");
     }
 
     public static void printResultPrice(int i) {
         System.out.println("<할인 후 예상 결제 금액>");
-        System.out.println(addComma(i)+"원");
+        System.out.println(addComma(i)+"원\n");
     }
 
     public static void printBadge(String badge) {
+        System.out.println("<12월 이벤트 배지>\n"+badge+"\n");
     }
 
     public static void printBenefit(Map<String,Integer> benefit) {
@@ -77,11 +78,16 @@ public class OutputView {
                 System.out.println(key + ": -"+addComma(benefit.get(key))+"원");
             }
         }
+
+        System.out.println("");
     }
 
     public static void printBenefitPrice(int sumBenefitPrice) {
         System.out.println("<총혜택 금액>");
-        System.out.println(addComma(sumBenefitPrice)+"원");
+        if(sumBenefitPrice!=0) {
+            System.out.print("-");
+        }
+        System.out.println(addComma(sumBenefitPrice)+"원\n");
     }
 
 

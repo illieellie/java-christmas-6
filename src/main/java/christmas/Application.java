@@ -13,15 +13,16 @@ public class Application {
         OutputView.printOrder(order); // 주문 프린트
         Order orderService = new Order();
 
-        // string 을 반환 하도록 다시 수정
+        // 할인 전 총 금액
         int sumPrice = orderService.sumPrice(order);
         OutputView.printPrice(sumPrice);
 
-        boolean gift = orderService.getGift(sumPrice); // 기프트
+        // 기프트
+        boolean gift = orderService.getGift(sumPrice);
         OutputView.printGift(gift);
 
         // 혜택내역
-        Map<String,Integer> benefit = orderService.getBenefit(orderDay,order,gift);
+        Map<String,Integer> benefit = orderService.getBenefit(orderDay,sumPrice,order,gift);
         OutputView.printBenefit(benefit);
 
         // 총혜택 금액 print
@@ -31,8 +32,9 @@ public class Application {
         // 최종 금액
         OutputView.printResultPrice(sumPrice-sumBenefitPrice);
 
-//        String badge = orderService.getBadge(discountPrice);
-//        OutputView.printBadge(badge);
+        // 배지
+        String badge = orderService.getBadge(sumBenefitPrice);
+        OutputView.printBadge(badge);
 
     }
 

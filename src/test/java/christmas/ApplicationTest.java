@@ -32,6 +32,13 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains("<혜택 내역>" + LINE_SEPARATOR + "없음");
         });
     }
+    @Test
+    void 혜택_내역_없음_출력_2() {
+        assertSimpleTest(() -> {
+            run("3", "타파스-1,제로콜라-1");
+            assertThat(output()).contains("<혜택 내역>" + LINE_SEPARATOR + "없음");
+        });
+    }
 
     @Test
     void 날짜_예외_테스트() {
@@ -106,11 +113,9 @@ class ApplicationTest extends NsTest {
     void 혜택내역_없음_출력() {
         assertSimpleTest(() -> {
             runException("26", "타파스-1,제로콜라-1");
-            assertThat(output()).contains("<혜택 내역>\n" +
-                    "없음");
+            assertThat(output()).contains("없음");
         });
     }
-
 
     @Override
     protected void runMain() {

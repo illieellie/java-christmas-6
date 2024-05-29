@@ -30,17 +30,16 @@ public class InputView {
 
 
     public static Map<String, Integer> inputComment2() throws IllegalArgumentException {
-        Map<String, Integer> order = new HashMap<>();
-        // string 형식으로 받아서 map 에 이름,개수 분리해서 넘겨줄 예정
+        Map<String, Integer> order = new HashMap<>(); // 이름-개수 넘겨줄 예정
         String s = readLine();
         int menuNumber = 0, onlyDrink = 0; // 메뉴 총량 // 0이면 음료만 주문
-        // 배열로 만든 다음 map 에 넣기
         String[] temp = s.split(",");
         Menu menu = new Menu();
-        validationOrder(temp.length);
+
+        validationOrder(temp.length); // 주문 들어온게 없으면 
         for (int i = 0; i < temp.length; i++){
             String []temp2 = temp[i].split("-"); // 타파스-1 의 형식
-
+            validation3(temp2.length); // 메뉴-개수로 나누어져야함
             validation1(temp2.length, menu.findMenu(temp2[0]), Integer.parseInt(temp2[1]),order.containsKey(temp2[0]));
 
             menuNumber +=Integer.parseInt(temp2[1]);
@@ -49,8 +48,13 @@ public class InputView {
             order.put(temp2[0], Integer.parseInt(temp2[1]));
         }
             validation2(menuNumber,onlyDrink);
-            // 음료만 주문 시 주문 할 수 없음
             return order; // 메뉴-값 반환
+    }
+
+    private static void validation3(int length) {
+        if (length != 2) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void validation1(int length, boolean existMenu, int orderNum, boolean orderDuplicate) throws IllegalArgumentException{
