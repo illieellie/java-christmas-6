@@ -95,7 +95,7 @@ public class Order {
         Map<String, Integer> benefit = new HashMap<>();
         int sumDiscountPrice = 0;
 
-        if(sumPrice>=10000) {// sumPrice가 10000원 이상이여야지 이벤트 적용
+        if (sumPrice >= 10000) {// sumPrice가 10000원 이상이여야지 이벤트 적용
             benefit.putAll(eventXMas(orderDay));
             benefit.putAll(eventWeekday(orderDay, order));
             benefit.putAll(eventWeekend(orderDay, order));
@@ -115,7 +115,7 @@ public class Order {
                 break;
             }
         }
-        if(discountPrice!=0) {
+        if (discountPrice != 0) {
             result.put("특별할인", discountPrice);
         }
         return result;

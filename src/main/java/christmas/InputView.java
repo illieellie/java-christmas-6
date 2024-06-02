@@ -37,18 +37,18 @@ public class InputView {
         Menu menu = new Menu();
 
         validationOrder(temp.length); // 주문 들어온게 없으면 
-        for (int i = 0; i < temp.length; i++){
-            String []temp2 = temp[i].split("-"); // 타파스-1 의 형식
+        for (int i = 0; i < temp.length; i++) {
+            String[] temp2 = temp[i].split("-"); // 타파스-1 의 형식
             validation3(temp2.length); // 메뉴-개수로 나누어져야함
-            validation1(temp2.length, menu.findMenu(temp2[0]), Integer.parseInt(temp2[1]),order.containsKey(temp2[0]));
+            validation1(temp2.length, menu.findMenu(temp2[0]), Integer.parseInt(temp2[1]), order.containsKey(temp2[0]));
 
-            menuNumber +=Integer.parseInt(temp2[1]);
-            onlyDrink+=menu.orderOnlyDrink(temp2[0]);
+            menuNumber += Integer.parseInt(temp2[1]);
+            onlyDrink += menu.orderOnlyDrink(temp2[0]);
 
             order.put(temp2[0], Integer.parseInt(temp2[1]));
         }
-            validation2(menuNumber,onlyDrink);
-            return order; // 메뉴-값 반환
+        validation2(menuNumber, onlyDrink);
+        return order; // 메뉴-값 반환
     }
 
     private static void validation3(int length) {
@@ -57,8 +57,8 @@ public class InputView {
         }
     }
 
-    public static void validation1(int length, boolean existMenu, int orderNum, boolean orderDuplicate) throws IllegalArgumentException{
-        if(length!=2 ||!existMenu ||orderNum==0||orderDuplicate){
+    public static void validation1(int length, boolean existMenu, int orderNum, boolean orderDuplicate) throws IllegalArgumentException {
+        if (length != 2 || !existMenu || orderNum == 0 || orderDuplicate) {
             // 메뉴 가격으로 나누어지지 않으면
             // 메뉴가 없다면
             // 하나의 주문수가 0이면
@@ -66,22 +66,20 @@ public class InputView {
             throw new IllegalArgumentException();
         }
     }
-    public static void validation2(int menuNumber, int onlyDrink) throws IllegalArgumentException{
-        if(menuNumber>20||onlyDrink==0){
+
+    public static void validation2(int menuNumber, int onlyDrink) throws IllegalArgumentException {
+        if (menuNumber > 20 || onlyDrink == 0) {
             // 메뉴가 20개 이상이면
             // 주문에 drink만 있다면
             throw new IllegalArgumentException();
         }
     }
 
-    public static void validationOrder(int num) throws IllegalArgumentException{
-        if(num==0){
+    public static void validationOrder(int num) throws IllegalArgumentException {
+        if (num == 0) {
             throw new IllegalArgumentException();
         }
     }
-
-
-
 
 
 }
